@@ -59,7 +59,7 @@ fieldset { margin: 5px 0; padding: 5px; border: 1px solid #dfdfdf; }
 legend { font-weight: bold; padding: 0; margin: 0 0 0 10px; }
 
 .breadcrumbs { overflow: hidden; font-size: 14px; }
-.breadcrumbs li { float: left; }
+.breadcrumbs li { float: left; list-style-type: none; }
 .breadcrumbs span { margin: 0 5px; }
 
 table.grid { width: 100%; color: #1C1C1C; border-collapse: collapse; }
