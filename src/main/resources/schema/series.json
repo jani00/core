@@ -1,0 +1,28 @@
+{
+    "description": "series schema",
+    "type": "object",
+    "properties": {
+        "format": {
+            "type": "string",
+            "title": "version format",
+            "required": true,
+            "pattern": "^core-series-\\d+$"
+        },
+        "title": {
+            "type": "string",
+            "title": "title of series",
+            "required": true,
+            "minLength": 2
+        },
+        "about": {
+            "type": "string",
+            "title": "information about the series",
+            "required": true
+        },
+        "notes": {
+            "type": "string",
+            "description": "additional notes about the series",
+            "required": true
+        }
+    }
+}

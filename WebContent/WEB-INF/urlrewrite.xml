@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<urlrewrite>
+
+	<rule>
+		<from>^/(index|about|series-format|contest-format|problem-format|user-format|security-policy|rest-service)$</from>
+		<set name="controller">page</set>
+		<set name="page">$1</set>
+		<to>/main</to>
+	</rule>
+	<rule>
+		<from>^/(registration|profile|login|logout)$</from>
+		<set name="controller">$1</set>
+		<to>/main</to>
+	</rule>
+	<rule>
+		<!-- <from>^/browse((/[a-z0-9_][a-z0-9_-]*)*)$</from> -->
+		<from>^/browse((/.*)*)$</from>
+		<set name="controller">browse</set>
+		<set name="path">$1</set>
+		<to>/main</to>
+	</rule>
+	<rule>
+		<from>^/rest((/.*)+)$</from>
+		<set name="path">$1</set>
+		<to>/rest</to>
+	</rule>
+	
+</urlrewrite>
+

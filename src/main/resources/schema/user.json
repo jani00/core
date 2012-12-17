@@ -1,0 +1,46 @@
+{
+    "description": "user schema",
+    "type": "object",
+    "properties": {
+        "login": {
+            "type": "string",
+            "title": "login name for the user",
+            "required": true,
+            "pattern": "^[a-z0-9][a-z0-9_-]{3,}$"
+        },
+        "password": {
+            "type": "string",
+            "title": "sha256 of password",
+            "required": true
+        },
+        "email": {
+            "type": "string",
+            "title": "",
+            "required": true,
+            "format": "email"
+        },
+        "real_name": {
+            "type": "string",
+            "title": "first and last name",
+            "required": true
+        },
+        "city": {
+            "type": "string",
+            "title": "city of the user",
+            "required": false
+        },
+        "organizations": {
+            "type": "array",
+            "title": "list of organization that the user belongs to (schools, university, etc.)",
+            "required": true,
+            "items": {
+                "type": "string"
+            }
+        },
+        "about": {
+            "type": "string",
+            "title": "additional information about the user",
+            "required": true
+        }
+    }
+}

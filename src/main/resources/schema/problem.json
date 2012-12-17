@@ -1,0 +1,71 @@
+{
+	"description": "problem schema",
+    "type": "object",
+    "properties": {
+        "format": {
+            "type": "string",
+            "title": "version format",
+            "required": true,
+            "pattern": "^core-problem-\\d+$"
+        },
+        "title": {
+            "type": "string",
+            "title": "title of problem",
+            "required": true,
+            "minLength": 2
+        },
+        "about": {
+            "type": "string",
+            "title": "information about the problem",
+            "required": false
+        },
+        "time_limit": {
+            "type": "number",
+            "title": "time limit in seconds",
+            "required": true,
+            "minimum": 0,
+            "exclusiveMinimum": false
+        },
+        "memory_limit": {
+            "type": "integer",
+            "title": "memory limit of the problem in mebibytes (2^20 bytes)",
+            "required": false,
+            "minimum": 0,
+            "exclusiveMinimum": false
+        },
+        "origin": {
+            "type": "string",
+            "title": "origin of the problem",
+            "required": false
+        },
+        "notes": {
+            "type": "string",
+            "title": "additional notes about the problem",
+            "required": false
+        },
+        "authors": {
+            "type": "array",
+            "title": "an array containing problem authors",
+            "required": false,
+            "items": {
+                "type": "string"
+            }
+        },
+        "test_weights": {
+            "type": "array",
+            "title": "an array containing the relative weight of each test",
+            "required": false,
+            "items": {
+                "type": "integer"
+            }
+        },
+        "checker": {
+            "type": "string",
+            "title": "the type of checker to be used",
+            "enum": [
+                "diff",
+                "custom"
+            ]
+        }
+    }
+}

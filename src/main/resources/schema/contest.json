@@ -1,0 +1,66 @@
+{
+	"description": "contest schema",
+    "type": "object",
+    "properties": {
+        "format": {
+            "type": "string",
+            "title": "version format",
+            "required": true,
+            "pattern": "^core-contest-\\d+$"
+        },
+        "title": {
+            "type": "string",
+            "title": "title of contest",
+            "required": true,
+            "minLength": 2
+        },
+        "start_time": {
+            "type": "string",
+            "title": "starting time of the contest",
+            "required": true,
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "duration": {
+            "type": "integer",
+            "title": "duration of contest in minutes",
+            "required": true,
+            "minimum": 0,
+            "exclusiveMinimum": true
+        },
+        "about": {
+            "type": "string",
+            "title": "information about the contest",
+            "required": true
+        },
+        "grading_style": {
+            "type": "string",
+            "title": "grading style of contest",
+            "required": true,
+            "enum": [
+                "acm",
+                "ioi"
+            ]
+        },
+        "problem_scores": {
+            "type": "array",
+            "title": "an array containing the score weight of each problem",
+            "required": true,
+            "items": {
+                "type": "integer"
+            }
+        },
+        "problem_order": {
+            "type": "array",
+            "description": "an array containing the sequence of the problems in the contest",
+            "required": true,
+            "items": {
+                "type": "string"
+            }
+        },
+        "notes": {
+            "type": "string",
+            "description": "additional notes about the contest",
+            "required": true
+        }
+    }
+}
