@@ -3,7 +3,6 @@ package core.web.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -112,11 +111,6 @@ public class RestServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// Long stamp = new Date().getTime();
-		// response.getWriter().println(stamp);
-		// response.getWriter().println(sha256(request.getRemoteAddr() + stamp +
-		// sha256("123123")));
-
 		String login = getLogin(request);
 
 		String path = (String) request.getAttribute("path");
@@ -270,7 +264,7 @@ public class RestServlet extends HttpServlet {
 	private void sendInfo(HttpServletRequest request,
 			HttpServletResponse response, int status, String message) {
 		Map<String, String> o = new HashMap<String, String>();
-		o.put("server_stamp", "" + new Date().getTime());
+		o.put("server_stamp", "" + System.currentTimeMillis());
 		o.put("remote_ip", request.getRemoteAddr());
 		o.put("message", message);
 		sendJson(response, status, o);
@@ -325,7 +319,7 @@ public class RestServlet extends HttpServlet {
 		String inputToken = request.getParameter("token");
 		User user = null;
 		Validator res = new Validator();
-		if (Math.abs(stamp - new Date().getTime()) > RestConfig.TIMESTAMP_TOLERANCE) {
+		if (Math.abs(stamp - System.currentTimeMillis()) > RestConfig.TIMESTAMP_TOLERANCE) {
 			res.addError("stamp", "Invalid timestamp.");
 		} else if (login == null) {
 			res.addError("login", "Login not supplied.");

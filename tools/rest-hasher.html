@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="sha256.js"></script>
+		<script>
+			function $(id) {
+				return document.getElementById(id);
+			}
+			window.onload = function() { 
+				$("stamp").value = new Date().getTime()
+				
+				$("button").onclick = function() {
+					var ip = $("ip").value;
+					var stamp = $("stamp").value;
+					var password = $("password").value;
+					var res = CryptoJS.SHA256(ip + stamp + CryptoJS.SHA256(password));
+					$("token").value = res;
+				}
+			}
+		</script>
+		<style>
+			label { display: inline-block; width: 100px; }
+			input { width: 450px; }
+			p { margin: 5px 0; }
+		</style>
+  </head>
+  <body>
+		<p><label>IP: </label><input id="ip" value="127.0.0.1" /></p>
+		<p><label>Stamp: </label><input id="stamp" /></p>
+		<p><label>Password: </label><input id="password" type="password" /></p>
+		<p><label>Token: </label><input id="token" /></p>
+		<button id="button">generate</button>
+  </body>
+</html>
