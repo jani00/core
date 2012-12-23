@@ -1,0 +1,1 @@
+{"format":"core-contest-1","title":"A demo contest","about":"Contains sample problems","notes":"","duration":43200,"start_time":"2012-10-10T12:00:00Z","grading_style":"acm","problem_scores":[10,20,100],"problem_order":["hello_world","sum","ascii"]}
