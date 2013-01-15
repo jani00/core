@@ -65,36 +65,14 @@ public class ReflectionUtilTest extends TestBase {
 	/**
 	 * Tests {@link ReflectionUtil#updateObjectProps(Object, Map, Map)}.
 	 */
-	public void testUpdateObjectPropsInvalid() {
-		Validator res;
-		
-		Map<String, Object> oldValues = new HashMap<String, Object>();
-		Map<String, Object> newValues = new HashMap<String, Object>();
-		
-		oldValues.put("name", "peter");
-		oldValues.put("age", 30);
-		
-		newValues.put("name", "mike");
-		newValues.put("age", 40);
-		
-		res = ReflectionUtil.updateObjectProps(person, oldValues, newValues);
-		
-		assertFalse(res.isValid());
-		assertEquals("john", person.getName());
-		assertEquals(newValues.get("age"), person.getAge());
-	}
-	
-	/**
-	 * Tests {@link ReflectionUtil#updateObjectProps(Object, Map, Map)}.
-	 */
 	public void testUpdateObjectPropsValid() {
 		Validator res;
 		
 		Map<String, Object> oldValues = new HashMap<String, Object>();
 		Map<String, Object> newValues = new HashMap<String, Object>();
 
-		oldValues.put("name", "john");
-		oldValues.put("age", 30);
+		oldValues.put("name", person.getName());
+		oldValues.put("age", person.getAge());
 		
 		newValues.put("name", "mike");
 		newValues.put("age", 40);

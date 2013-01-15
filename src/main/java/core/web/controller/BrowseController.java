@@ -181,7 +181,6 @@ public class BrowseController extends Controller {
 				"new_");
 
 		Validator validator = node.update(oldValues, newValues);
-		status.setFromValidator(validator, "File successfully added");
 
 		String res = node.getResourcePath();
 

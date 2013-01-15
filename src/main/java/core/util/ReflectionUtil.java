@@ -64,41 +64,38 @@ public class ReflectionUtil {
 	}
 
 	/**
-	 * Sets a list of properties with a certain values. Compares the current
-	 * value of the property with the corresponding value in oldValues and if
-	 * different, adds an error.
+	 * Sets a list of properties with a certain values. Only updates property if a values
+	 * has been changed, by comparing against the corresponding value in "oldValues".
 	 * 
 	 * @param object
 	 * @param oldValues
+	 *            A map, containing the original values.
 	 * @param newValues
+	 *            A map, containing the new values.
 	 * @return {@link Validator}
 	 */
 	public static Validator updateObjectProps(Object object,
 			Map<String, Object> oldValues, Map<String, Object> newValues) {
 		Validator validator = new Validator();
 
-		Object current = null;
 		Object oldValue = null;
 		Object newValue = null;
 		Class<?> clazz = null;
 		for (String key : newValues.keySet()) {
-			boolean valid = true;
+			boolean shouldUpdate = true;
+			newValue = newValues.get(key);
 			if (oldValues.containsKey(key)) {
 				clazz = getPropertyClass(object, key);
 
-				current = getPropertyValue(object, key);
 				oldValue = Parser.readObject(oldValues.get(key), clazz);
-				if (current != null && oldValue != null
-						&& !current.equals(oldValue)) {
-					valid = false;
+				if (oldValue != null
+						&& oldValue.equals(newValue)) {
+					shouldUpdate = false;
 				}
 			}
-			if (valid) {
-				newValue = Parser.readObject(newValues.get(key), clazz);
+			if (shouldUpdate) {
+				System.out.println(newValue);
 				setPropertyValue(object, key, newValue);
-			} else {
-				validator.addError(String.format("changed_%s", key),
-						String.format("%s has been changed", key));
 			}
 		}
 
