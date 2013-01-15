@@ -94,7 +94,6 @@ public class ReflectionUtil {
 				}
 			}
 			if (shouldUpdate) {
-				System.out.println(newValue);
 				setPropertyValue(object, key, newValue);
 			}
 		}
