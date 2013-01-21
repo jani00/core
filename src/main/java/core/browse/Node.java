@@ -605,7 +605,7 @@ public class Node {
 	 * 
 	 * @return {@link Validator}
 	 */
-	public Validator update(Map<String, Object> oldValues,
+	public Validator updateResource(Map<String, Object> oldValues,
 			Map<String, Object> newValues) {
 		Validator res = new Validator();
 		if (getAccess().includes(AccessRight.VIEW_FULL)) {

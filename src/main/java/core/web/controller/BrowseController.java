@@ -180,7 +180,7 @@ public class BrowseController extends Controller {
 		Map<String, Object> newValues = CollectionUtil.filterMap(post, params,
 				"new_");
 
-		Validator validator = node.update(oldValues, newValues);
+		Validator validator = node.updateResource(oldValues, newValues);
 
 		String res = node.getResourcePath();
 
