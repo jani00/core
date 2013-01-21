@@ -7,7 +7,7 @@
 	<p>In order to access the REST service, an authentication is required. The following parameters should be passed on each request in order for successful authentication:</p>
 	<ul>
 		<li>login - The user login.</li>
-		<li>timestamp - The timestamp on the user's machine. It is the time in milliseconds since January 1, 1970, 00:00:00 GMT</li>
+		<li>stamp - The timestamp on the user's machine. It is the time in milliseconds since January 1, 1970, 00:00:00 GMT</li>
 		<li>token - which should be calculated like sha256(ip + timestamp + sha256(password)), where ip is the user's ip address.</li>
 	</ul>
 	<h3>Methods</h3>
