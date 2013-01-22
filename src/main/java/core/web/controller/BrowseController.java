@@ -142,7 +142,8 @@ public class BrowseController extends Controller {
 	private String addResource(PostState state, StatusMessage status) {
 		String name = post.get("newresource");
 		Validator validator = node.addResource(name);
-		status.setFromValidator(validator, "Resource successfully added");
+		status.setFromValidator(validator, String.format("%s \"%s\" created",
+				node.getSuccessorKind().getName(), name));
 		if (!validator.isValid()) {
 			state.put("newresource", name);
 		}
@@ -152,7 +153,8 @@ public class BrowseController extends Controller {
 	private String addDirectory(PostState state, StatusMessage status) {
 		String name = post.get("newdir");
 		Validator validator = node.addDirectory(name);
-		status.setFromValidator(validator, "Directory successfully added");
+		status.setFromValidator(validator,
+				String.format("Directory \"%s\" created", name));
 		if (!validator.isValid()) {
 			state.put("newdir", name);
 		}
@@ -162,13 +164,15 @@ public class BrowseController extends Controller {
 	private String addFile(StatusMessage status) {
 		FileUpload file = files.get("newfile");
 		Validator validator = node.addFile(file, false);
-		status.setFromValidator(validator, "File successfully added");
+		status.setFromValidator(validator,
+				String.format("File \"%s\" added", file.getFilename()));
 		return node.getPath();
 	}
 
 	private String validate(StatusMessage status) {
 		Validator validator = node.validateResource();
-		status.setFromValidator(validator, "Resource is valid");
+		status.setFromValidator(validator, String.format("%s %s is valid", node
+				.getResouceKind().getName(), node.getResouce().getId()));
 		return node.getPath();
 	}
 
