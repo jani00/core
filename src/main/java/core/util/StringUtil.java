@@ -28,7 +28,7 @@ public class StringUtil {
 			byte[] bytes = digest.digest(input.getBytes("UTF-8"));
 
 			BigInteger bigInt = new BigInteger(1, bytes);
-			return bigInt.toString(16);
+			return String.format("%064x", bigInt);
 
 		} catch (NoSuchAlgorithmException e) {
 			assert false;
